@@ -1,0 +1,165 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-cyan: var(--cyan);
+  --color-mint: var(--mint);
+  --color-navy: var(--navy);
+}
+
+:root {
+  --radius: 0.25rem; /* 4px — minimalist standard */
+
+  /* Brand */
+  --navy: oklch(0.21 0.04 264);          /* #0F172A deep navy */
+  --cyan: oklch(0.74 0.13 215);          /* #06B6D4 */
+  --mint: oklch(0.72 0.16 162);          /* #10B981 */
+
+  --background: oklch(1 0 0);
+  --foreground: var(--navy);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--navy);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--navy);
+  --primary: var(--navy);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0.01 240);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.97 0.01 240);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --accent: var(--cyan);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.6 0.24 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.92 0.01 255);
+  --input: oklch(0.92 0.01 255);
+  --ring: var(--cyan);
+
+  --gradient-hero: linear-gradient(135deg, var(--navy) 0%, oklch(0.28 0.06 250) 60%, oklch(0.32 0.08 220) 100%);
+  --gradient-accent: linear-gradient(90deg, var(--cyan), var(--mint));
+  --shadow-glow: 0 20px 60px -20px color-mix(in oklab, var(--cyan) 40%, transparent);
+}
+
+.dark {
+  --background: var(--navy);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.25 0.04 260);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.25 0.04 260);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: var(--cyan);
+  --primary-foreground: var(--navy);
+  --secondary: oklch(0.28 0.04 260);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.28 0.04 260);
+  --muted-foreground: oklch(0.7 0.02 260);
+  --accent: var(--mint);
+  --accent-foreground: var(--navy);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--cyan);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-sans); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { letter-spacing: -0.025em; }
+  h3, h4 { letter-spacing: -0.015em; }
+}
+
+@layer utilities {
+  /* Equal-height card inside a CSS grid */
+  .card-equal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  /* Readable body text width for long-form content */
+  .prose-readable { max-width: 700px; }
+
+  /* Standardized buttons */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 4px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: var(--cyan);
+    color: var(--navy);
+    border: 1px solid var(--cyan);
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 4px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+  .btn-secondary:hover {
+    background-color: color-mix(in oklab, var(--cyan) 12%, transparent);
+  }
+
+  /* Subtle, fast card hover */
+  .card-hover {
+    transition: border-color 120ms ease, transform 120ms ease;
+  }
+  .card-hover:hover {
+    border-color: color-mix(in oklab, var(--cyan) 60%, transparent);
+    transform: translateY(-1px);
+  }
+}
+
+/* Fix: Tailwind arbitrary `bg-[var(--gradient-accent)]` resolves to
+   background-color, which silently fails for gradients. Force it to
+   render as background-image so primary buttons appear correctly. */
+.bg-\[var\(--gradient-accent\)\] {
+  background-color: transparent !important;
+  background-image: var(--gradient-accent) !important;
+}
+
