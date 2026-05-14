@@ -6,10 +6,8 @@ import {
   createRootRouteWithContext,
   useRouter,
   HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
 
-import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -73,8 +71,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Henagon" },
       { name: "description", content: "Henagon Digital Hub is an enterprise IT website showcasing AI solutions and services." },
       { name: "author", content: "Henagon" },
@@ -85,65 +81,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Henagon" },
       { name: "twitter:description", content: "Henagon Digital Hub is an enterprise IT website showcasing AI solutions and services." },
     ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
-      },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Organization",
-              "@id": "https://www.henagon.com/#organization",
-              name: "Henagon",
-              url: "https://www.henagon.com",
-              description:
-                "Henagon Digital Hub is an enterprise IT company delivering AI solutions and services.",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://www.henagon.com/favicon.ico",
-              },
-            },
-            {
-              "@type": "WebSite",
-              "@id": "https://www.henagon.com/#website",
-              name: "Henagon",
-              url: "https://www.henagon.com",
-              publisher: { "@id": "https://www.henagon.com/#organization" },
-              inLanguage: "en",
-            },
-          ],
-        }),
-      },
-    ],
   }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
@@ -151,6 +93,7 @@ function RootComponent() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
+        <HeadContent />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">
