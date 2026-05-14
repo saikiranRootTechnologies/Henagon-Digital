@@ -44,7 +44,7 @@ export function ContactForm({
   };
 
   const inputBase = isDark
-    ? "mt-2 w-full rounded-md border border-white/15 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/40 outline-none focus:ring-2 focus:ring-[var(--cyan)]"
+    ? "mt-2 w-full rounded-md border border-white/15 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/65 outline-none focus:ring-2 focus:ring-[var(--cyan)]"
     : "mt-2 w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[var(--cyan)]";
 
   const labelClass = isDark
@@ -149,13 +149,13 @@ export function ContactForm({
         </div>
         <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-3">
           <p
-            className={`text-xs ${isDark ? "text-white/50" : "text-muted-foreground"}`}
+            className={`text-xs ${isDark ? "text-white/70" : "text-muted-foreground"}`}
           >
             We respond within one business day.
           </p>
           <button
             type="submit"
-            className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)]"
+            className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)]"
           >
             Submit Message <Send className="h-4 w-4" />
           </button>

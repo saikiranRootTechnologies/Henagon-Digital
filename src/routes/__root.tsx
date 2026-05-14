@@ -1,12 +1,15 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
 import {
   Outlet,
   Link,
   createRootRouteWithContext,
   useRouter,
   HeadContent,
+  Scripts,
 } from "@tanstack/react-router";
 
+import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -74,18 +77,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Henagon" },
       { name: "description", content: "Henagon Digital Hub is an enterprise IT website showcasing AI solutions and services." },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "Henagon" },
       { property: "og:title", content: "Henagon" },
       { property: "og:description", content: "Henagon Digital Hub is an enterprise IT website showcasing AI solutions and services." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Henagon" },
       { name: "twitter:description", content: "Henagon Digital Hub is an enterprise IT website showcasing AI solutions and services." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a844a0d1-5dfa-4151-bb1e-cb9697915e1c/id-preview-2211d181--03b1722c-32ab-48f9-a178-6c3eb486c431.lovable.app-1778666315202.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a844a0d1-5dfa-4151-bb1e-cb9697915e1c/id-preview-2211d181--03b1722c-32ab-48f9-a178-6c3eb486c431.lovable.app-1778666315202.png" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -93,25 +94,71 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://www.henagon.com/#organization",
+              name: "Henagon",
+              url: "https://www.henagon.com",
+              description:
+                "Henagon Digital Hub is an enterprise IT company delivering AI solutions and services.",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.henagon.com/favicon.ico",
+              },
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://www.henagon.com/#website",
+              name: "Henagon",
+              url: "https://www.henagon.com",
+              publisher: { "@id": "https://www.henagon.com/#organization" },
+              inLanguage: "en",
+            },
+          ],
+        }),
+      },
+    ],
   }),
+  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
+function RootShell({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <HeadContent />
-      <div className="flex min-h-screen flex-col">
-        <SiteHeader />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <SiteFooter />
-      </div>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <div className="flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <SiteFooter />
+        </div>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }

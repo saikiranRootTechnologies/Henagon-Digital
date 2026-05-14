@@ -2,6 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Quote, User } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
+import aliDhoonPhoto from "@/assets/advisors/ali-dhoon.webp";
+import shabbirPhoto from "@/assets/advisors/shabbir-wakhariya.webp";
+import paragPhoto from "@/assets/advisors/parag-nandimath.webp";
+import abdulPhoto from "@/assets/advisors/abdul-qadir-badri.webp";
+import atulPhoto from "@/assets/advisors/atul-kumbhkarni.webp";
 
 export const Route = createFileRoute("/advisory-board")({
   head: () => ({
@@ -16,8 +21,12 @@ export const Route = createFileRoute("/advisory-board")({
       {
         property: "og:description",
         content:
-          "A board of operators and domain leaders shaping Henagon's strategy, governance, and global growth.",
+          "The Henagon Advisory Board brings together seasoned executives across IT services, managed infrastructure, cybersecurity, digital transformation, and international law — guiding strategy, governance, and growth across the Henagon group.",
       },
+      { property: "og:url", content: "https://www.henagon.com/advisory-board" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/advisory-board" },
     ],
   }),
   component: AdvisoryBoardPage,
@@ -26,6 +35,7 @@ export const Route = createFileRoute("/advisory-board")({
 type Member = {
   name: string;
   subtitle?: string;
+  photo?: string;
   paragraphs: string[];
   focus?: { heading: string; items: string[] };
   principle?: { label: string; body: string };
@@ -34,6 +44,7 @@ type Member = {
 const members: Member[] = [
   {
     name: "Ali Dhoon",
+    photo: aliDhoonPhoto,
     paragraphs: [
       "Ali is a visionary executive in business management and development strategies, particularly in the information technology and telecommunications industries.",
       "He has been highly successful in growing businesses by developing new markets, orchestrating strategic acquisitions, and creatively managing key business units.",
@@ -46,8 +57,17 @@ const members: Member[] = [
     },
   },
   {
+    name: "Shabbir S. Wakhariya",
+    photo: shabbirPhoto,
+    paragraphs: [
+      "Shabbir is an experienced international attorney qualified in New York, Washington DC, India, and as a Solicitor of England and Wales. Shabbir has been in practice for more than 30 years. His first two decades were spent at a big law firm in New York City, and in the past decade, he has continued an independent practice representing US, UK, and European clients on cross-border corporate transactions, governance and compliance issues, HR issues, and acting as outside general counsel to international companies.",
+      "At Core IT, Shabbir provides legal guidance to the founder and board members on various business initiatives in the USA and globally. Shabbir guides the board and operational teams on risk and liability issues, supervises governance and compliance, advises on global IP and brand protection, and on capital contribution structures and investor protection.",
+    ],
+  },
+  {
     name: "Parag Nandimath",
     subtitle: "President at CoreIT (A Henagon company)",
+    photo: paragPhoto,
     paragraphs: [
       "Parag has been an integral part of our growth story since 2012. After a successful career as a General Manager and Regional Business Head for major corporations, Parag brings to the table his rich experience and expertise. He is a strategic thinker who is always looking for new ways to innovate and stay ahead of the competition.",
       "Parag is a Certified Information Systems Auditor (CISA), Certified Information Security Manager (CISM), and Certified in Risk and Information Systems Control (CRISC), in addition to Business Administration certifications.",
@@ -64,6 +84,7 @@ const members: Member[] = [
   {
     name: "Atul Kumbhkarni",
     subtitle: "Founder of Matrixnodes (A Henagon company)",
+    photo: atulPhoto,
     paragraphs: [
       "Atul is an entrepreneur at heart and a passionate digital business solution consultant who bridges business silos. He has a unique cross-industry experience, and in the last two decades, he has worked closely with senior management of Fortune 500 and other top companies across all verticals.",
       "He believes in co-creating and is actively involved with both startups and established brands to streamline their digital enterprise journey that enhances their brand value and customer experience.",
@@ -73,17 +94,11 @@ const members: Member[] = [
   {
     name: "Abdul Qadir Badri",
     subtitle: "Founder & CEO of Root Technologies (A Henagon company)",
+    photo: abdulPhoto,
     paragraphs: [
       "He has managed IT teams, overseen Gateway Servers, and provided technical leadership and project management expertise along with growing the business with his exceptional sales acumen.",
       "Abdul Qadir excels in designing and implementing network infrastructure, configuring remote access solutions, and ensuring network security through VPNs, VLANs, and routing protocols.",
       "Abdul Qadir holds several certifications, including Cisco Certified Network Associate (CCNA), Microsoft Certified System Engineer (MCSE), Microsoft Certified System Administrator (MCSA), Microsoft Certified Professional (MCP) Windows 2003, Jetking Certified Hardware & Network Professional (JCHNP), Red Hat Certified Engineer (RHCE), Cisco Secure PIX Firewall Advanced (CSPFA), Certified Wireless Network Administrator (CWNA), and Checkpoint Certified Security Administrator.",
-    ],
-  },
-  {
-    name: "Shabbir S. Wakhariya",
-    paragraphs: [
-      "Shabbir is an experienced international attorney qualified in New York, Washington DC, India, and as a Solicitor of England and Wales. Shabbir has been in practice for more than 30 years. His first two decades were spent at a big law firm in New York City, and in the past decade, he has continued an independent practice representing US, UK, and European clients on cross-border corporate transactions, governance and compliance issues, HR issues, and acting as outside general counsel to international companies.",
-      "At Core IT, Shabbir provides legal guidance to the founder and board members on various business initiatives in the USA and globally. Shabbir guides the board and operational teams on risk and liability issues, supervises governance and compliance, advises on global IP and brand protection, and on capital contribution structures and investor protection.",
     ],
   },
 ];
@@ -100,10 +115,14 @@ function MemberCard({ m }: { m: Member }) {
     <article className="grid items-start gap-8 sm:grid-cols-[200px_1fr] sm:gap-10">
       {/* Portrait — uniform 200x200, light grey border */}
       <div className="mx-auto w-full max-w-[200px] sm:mx-0">
-        <div className="aspect-square overflow-hidden rounded-xl border border-border bg-muted/40">
-          <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
-            <User className="h-20 w-20" strokeWidth={1} />
-          </div>
+        <div className="aspect-square overflow-hidden">
+          {m.photo ? (
+            <img src={m.photo} alt={m.name} className="h-full w-full object-contain" />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-muted-foreground/40">
+              <User className="h-20 w-20" strokeWidth={1} />
+            </div>
+          )}
         </div>
       </div>
 

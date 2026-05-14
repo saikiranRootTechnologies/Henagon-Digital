@@ -9,14 +9,18 @@ export const Route = createFileRoute("/about-us")({
       {
         name: "description",
         content:
-          "Henagon is a 30-year technology operator that runs AI as the operating substrate across compute, hosting, security, agents, and vertical solutions.",
+          "Henagon is a 30-year technology operator that runs AI as the operating substrate across compute, hosting, security, agents, and vertical solutions. Discover how three decades of operating discipline now power our AI-native posture.",
       },
       { property: "og:title", content: "About Henagon — An AI-Native Operator With 30 Years of Discipline" },
       {
         property: "og:description",
         content:
-          "Three decades of operating discipline now power our AI-native posture across every layer of the stack.",
+          "Henagon is a 30-year technology operator that runs AI as the operating substrate across compute, hosting, security, agents, and vertical solutions. Discover how three decades of operating discipline now power our AI-native posture.",
       },
+      { property: "og:url", content: "https://www.henagon.com/about-us" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/about-us" },
     ],
   }),
   component: AboutPage,
@@ -137,7 +141,7 @@ function AboutPage() {
             </h3>
             <Link
               to="/contact-us"
-              className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+              className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white"
             >
               Talk to Our Team <ArrowRight className="h-4 w-4" />
             </Link>

@@ -18,7 +18,7 @@ export const Route = createFileRoute("/our-approach")({
       {
         name: "description",
         content:
-          "Henagon's six-pillar approach combines strategic foresight, financial sturdiness, competitive tenacity, leadership prowess, value enhancement, and AI-driven operations.",
+          "Henagon's six-pillar approach combines strategic foresight, financial sturdiness, competitive tenacity, leadership prowess, value enhancement, and AI-driven operations to deliver durable business growth in the digital era.",
       },
       {
         property: "og:title",
@@ -27,8 +27,12 @@ export const Route = createFileRoute("/our-approach")({
       {
         property: "og:description",
         content:
-          "Six pillars applied consistently across every Henagon engagement to deliver durable business growth in the digital era.",
+          "Henagon's six-pillar approach combines strategic foresight, financial sturdiness, competitive tenacity, leadership prowess, value enhancement, and AI-driven operations to deliver durable business growth in the digital era.",
       },
+      { property: "og:url", content: "https://www.henagon.com/our-approach" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/our-approach" },
     ],
   }),
   component: OurApproachPage,
@@ -112,7 +116,7 @@ function OurApproachPage() {
                     New
                   </span>
                 )}
-                <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+                <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                   <p.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold leading-snug">{p.title}</h3>
@@ -163,7 +167,7 @@ function OurApproachPage() {
             />
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)] sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)] sm:w-auto"
             >
               Submit <ArrowRight className="h-4 w-4" />
             </button>
@@ -180,7 +184,7 @@ function OurApproachPage() {
             <h3 className="text-2xl font-bold sm:text-3xl">Ready to apply the approach to your business?</h3>
             <Link
               to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white"
             >
               Talk to Our Team <ArrowRight className="h-4 w-4" />
             </Link>

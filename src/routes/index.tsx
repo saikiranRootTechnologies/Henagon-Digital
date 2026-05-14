@@ -13,8 +13,14 @@ import {
   Network,
   LayoutGrid,
 } from "lucide-react";
-import aiStackVisual from "@/assets/ai-stack-visual.jpg";
-import heroGraphic from "@/assets/hero-graphic.png";
+import aiStackVisual from "@/assets/ai-stack-visual.webp";
+import whoWeAreLight from "@/assets/who-we-are-light.webp";
+import heroGraphic from "@/assets/hero-graphic.webp";
+import logoCoreIt from "@/assets/logos/coreit.webp";
+import logoEzzisolutions from "@/assets/logos/ezzisolutions.webp";
+import logoMatrixnodes from "@/assets/logos/matrixnodes.webp";
+import logoRoot from "@/assets/logos/root.webp";
+import logoEzzi from "@/assets/logos/ezzinet.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,14 +29,18 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Henagon is a 30-year technology operator powering the complete AI stack — compute, hosting, security, agents, and vertical solutions. Compliance-first, built to scale.",
+          "Henagon is a 30-year technology operator powering the complete AI stack — compute, hosting, security, agents, and vertical solutions. Compliance-first, built to scale. Headquartered in the United States with two data centers and a Cybersecurity Center of Excellence.",
       },
       { property: "og:title", content: "Henagon — Human-Driven AI for the Enterprise" },
       {
         property: "og:description",
         content:
-          "A 30-year technology operator powering the complete AI stack — compute, hosting, security, agents, and vertical solutions.",
+          "Henagon is a 30-year technology operator powering the complete AI stack — compute, hosting, security, agents, and vertical solutions. Compliance-first, built to scale. Headquartered in the United States with two data centers and a Cybersecurity Center of Excellence.",
       },
+      { property: "og:url", content: "https://www.henagon.com/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/" },
     ],
   }),
   component: Home,
@@ -50,16 +60,16 @@ const stack = [
   { icon: Cloud, title: "02 — AI Hosting & Private Cloud", body: "Private cloud, managed hosting, and hybrid cloud — re-architected for GPU, inference, and data-sovereignty needs." },
   { icon: ShieldCheck, title: "03 — AI Security & Compliance", body: "Cybersecurity Center of Excellence with SOC-2 Type II, CERT-IN, and a 100% AI-driven Tier-1 SOC." },
   { icon: Network, title: "04 — AI Agents & Development", body: "Agentic systems, LLM pipelines, and enterprise copilots — built by Ezzi AI Solutions, Root Technologies, and Matrixnodes." },
-  { icon: LayoutGrid, title: "05 — AI Solutions", body: "Vertical AI products via ezzisolution.ai — starting with CareflowUSA for healthcare and continuous compliance dashboards." },
+  { icon: LayoutGrid, title: "05 — AI Solutions", body: "Vertical AI products via ezzisolutions.ai — starting with CareflowUSA for healthcare and continuous compliance dashboards." },
 ];
 
 const groupCompanies = [
-  { name: "Core IT", body: "A managed IT services and cybersecurity provider serving enterprise clients. Anchor company within the Henagon group." },
-  { name: "Root Technologies", body: "Root Technologies is a leading IT Services integrator delivering world-class IT infrastructure services to customers PAN India." },
-  { name: "Matrixnodes", body: "Digital business solutions and AI development — partner of choice for Fortune 500 enterprises navigating their digital transformation." },
-  { name: "EZZI", body: "Long-standing technology operator within the Henagon group; foundation of our hosting and managed services lineage." },
-  { name: "ezzisolution.ai", body: "Vertical AI products and solutions — the go-to-market engine for industry copilots, compliance dashboards, and the next wave of vertical AI from the Henagon platform." },
-  { name: "CareflowUSA", body: "AI-powered healthcare workflow platform. Streamlines care coordination, documentation, and operational flow for providers. HIPAA-aligned. Recurring SaaS." },
+  { name: "Core IT", url: "https://coreitx.com/", logo: logoCoreIt, body: "A managed IT services and cybersecurity provider serving enterprise clients. Anchor company within the Henagon group." },
+  { name: "Root Technologies", url: "https://roottechnologies.co.in/", logo: logoRoot, body: "Root Technologies is a leading IT Services integrator delivering world-class IT infrastructure services to customers PAN India." },
+  { name: "Matrixnodes", url: "https://matrixnodes.com/", logo: logoMatrixnodes, body: "Digital business solutions and AI development — partner of choice for Fortune 500 enterprises navigating their digital transformation." },
+  { name: "EZZI", url: "https://ezzi.net/", logo: logoEzzi, body: "Long-standing technology operator within the Henagon group; foundation of our hosting and managed services lineage." },
+  { name: "ezzisolutions.ai", url: "https://ezzisolutions.ai/", logo: logoEzzisolutions, body: "Vertical AI products and solutions — the go-to-market engine for industry copilots, compliance dashboards, and the next wave of vertical AI from the Henagon platform." },
+  { name: "CareflowUSA", url: "https://careflowusa.com/", logo: null, body: "AI-powered healthcare workflow platform. Streamlines care coordination, documentation, and operational flow for providers. HIPAA-aligned. Recurring SaaS." },
 ];
 
 function Home() {
@@ -133,12 +143,12 @@ function Home() {
           <div className="relative">
             <div className="absolute -inset-4 -z-10 rounded-3xl bg-[var(--cyan)]/10 blur-3xl" />
             <img
-              src={aiStackVisual}
-              alt="Layered visualization of Henagon's integrated AI stack"
+              src={whoWeAreLight}
+              alt="Layered illustration representing Henagon's strategic, compliance-driven IT approach"
               width={1024}
               height={1024}
               loading="lazy"
-              className="rounded-2xl border border-border shadow-2xl"
+              className="rounded-2xl border border-border shadow-xl"
             />
           </div>
         </div>
@@ -169,7 +179,7 @@ function Home() {
               key={p.title}
               className="group rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-[var(--cyan)]/40 hover:shadow-lg"
             >
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+              <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                 <p.icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-lg font-semibold">{p.title}</h3>
@@ -199,7 +209,7 @@ function Home() {
                 key={s.title}
                 className="rounded-xl border border-border bg-card p-6 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-[var(--cyan)]/50"
               >
-                <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+                <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                   <s.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-[var(--navy)]">{s.title}</h3>
@@ -210,7 +220,7 @@ function Home() {
           <div className="mt-12">
             <Link
               to="/ai-stack"
-              className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)]"
+              className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)]"
             >
               See the full AI Stack <ArrowRight className="h-4 w-4" />
             </Link>
@@ -228,16 +238,30 @@ function Home() {
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {groupCompanies.map((c) => (
-            <div
+            <a
               key={c.name}
-              className="rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-[var(--mint)]/50 hover:shadow-lg"
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${c.name} website (opens in new tab)`}
+              className="group flex flex-col rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--mint)]/50 hover:shadow-xl"
             >
-              <div className="flex h-12 items-center">
-                <span className="text-xl font-bold tracking-tight">{c.name}</span>
+              <div className="flex h-[90px] items-center justify-start">
+                {c.logo ? (
+                  <img
+                    src={c.logo}
+                    alt={`${c.name} logo`}
+                    className="max-h-[90px] w-auto max-w-[180px] object-contain"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span className="text-2xl font-bold tracking-tight text-[var(--navy)]">{c.name}</span>
+                )}
               </div>
+              <h3 className="mt-4 text-lg font-semibold text-[var(--navy)]">{c.name}</h3>
               <div className="mt-2 h-px w-12 bg-[var(--gradient-accent)]" />
               <p className="mt-4 text-sm text-muted-foreground">{c.body}</p>
-            </div>
+            </a>
           ))}
         </div>
       </section>
@@ -252,7 +276,7 @@ function Home() {
           </p>
           <Link
             to="/business-portfolio"
-            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)]"
+            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)]"
           >
             Explore the Portfolio <ArrowRight className="h-4 w-4" />
           </Link>
@@ -270,7 +294,7 @@ function Home() {
             </h3>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+              className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white"
             >
               Talk to Our Team <ArrowRight className="h-4 w-4" />
             </Link>

@@ -10,8 +10,18 @@ export const Route = createFileRoute("/contact-us")({
       {
         name: "description",
         content:
-          "Reach the Henagon team to discuss AI hosting, AI-led security, agentic development, vertical AI solutions, or a potential acquisition.",
+          "Reach the Henagon team to discuss AI hosting, AI-led security, agentic development, vertical AI solutions, or a potential acquisition. We respond promptly and route every inquiry to the right operator.",
       },
+      { property: "og:title", content: "Contact Henagon — Talk to Our Team" },
+      {
+        property: "og:description",
+        content:
+          "Reach the Henagon team to discuss AI hosting, AI-led security, agentic development, vertical AI solutions, or a potential acquisition. We respond promptly and route every inquiry to the right operator.",
+      },
+      { property: "og:url", content: "https://www.henagon.com/contact-us" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/contact-us" },
     ],
   }),
   component: ContactUs,
@@ -137,7 +147,7 @@ function ContactUs() {
                 </p>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)]"
+                  className="inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)]"
                 >
                   Submit Message <Send className="h-4 w-4" />
                 </button>
@@ -167,8 +177,8 @@ function ContactUs() {
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Other Ways to Reach Us</h2>
             <div className="mt-8 space-y-4">
               {[
-                { icon: Mail, label: "Email", value: "hello@henagonusa.com" },
-                { icon: Phone, label: "Phone", value: "+1 (585) 555-0100" },
+                { icon: Mail, label: "Email", value: "info@henagonusa.com" },
+                { icon: Phone, label: "Phone", value: "+1 346 680 5300" },
                 {
                   icon: MapPin,
                   label: "Office",
@@ -178,14 +188,14 @@ function ContactUs() {
                   icon: Building2,
                   label: "Operating companies",
                   value:
-                    "Core IT, EZZI, Matrixnodes, Root Technologies, ezzisolution.ai, CareflowUSA.",
+                    "Core IT, EZZI, Matrixnodes, Root Technologies, ezzisolutions.ai, CareflowUSA.",
                 },
               ].map((item) => (
                 <div
                   key={item.label}
                   className="flex gap-4 rounded-xl border border-border bg-card p-5"
                 >
-                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                     <item.icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -230,7 +240,7 @@ function ContactUs() {
           </h2>
           <a
             href="#contact-form"
-            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)]"
+            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)]"
           >
             Talk to Our Team <ArrowRight className="h-4 w-4" />
           </a>

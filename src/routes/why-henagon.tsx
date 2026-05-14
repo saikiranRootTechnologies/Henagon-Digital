@@ -9,14 +9,18 @@ export const Route = createFileRoute("/why-henagon")({
       {
         name: "description",
         content:
-          "Henagon is a vertically integrated AI operator with 30 years of customer trust, a complete AI stack, and a compliance-first posture.",
+          "Henagon is a vertically integrated AI operator with 30 years of customer trust, a complete AI stack, and a compliance-first posture. Three reasons clients and partners choose Henagon as their growth partner.",
       },
       { property: "og:title", content: "Why Henagon — The Most Trusted Growth Partner for AI-Era IT" },
       {
         property: "og:description",
         content:
-          "Three reasons clients and partners choose Henagon: complete AI stack, proven operating chassis, compliance-first posture.",
+          "Henagon is a vertically integrated AI operator with 30 years of customer trust, a complete AI stack, and a compliance-first posture. Three reasons clients and partners choose Henagon as their growth partner.",
       },
+      { property: "og:url", content: "https://www.henagon.com/why-henagon" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/why-henagon" },
     ],
   }),
   component: WhyHenagonPage,
@@ -85,7 +89,7 @@ function WhyHenagonPage() {
                 key={r.title}
                 className="group relative rounded-xl border border-border bg-card p-8 transition-all hover:-translate-y-0.5 hover:border-[var(--cyan)]/40 hover:shadow-lg"
               >
-                <div className="grid h-12 w-12 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+                <div className="grid h-12 w-12 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                   <r.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-6 text-xl font-semibold">{r.title}</h3>
@@ -144,7 +148,7 @@ function WhyHenagonPage() {
             <h3 className="text-2xl font-bold sm:text-3xl">Ready to elevate with Henagon?</h3>
             <Link
               to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white"
             >
               Talk to Our Team <ArrowRight className="h-4 w-4" />
             </Link>

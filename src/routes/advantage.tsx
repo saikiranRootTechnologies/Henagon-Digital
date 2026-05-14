@@ -18,14 +18,18 @@ export const Route = createFileRoute("/advantage")({
       {
         name: "description",
         content:
-          "Considering a sale of your managed IT services business? Henagon Advantage+ delivers a fair, transparent acquisition process backed by a Compliance-Driven IT model and an AI-native capability stack.",
+          "Considering a sale of your managed IT services business? Henagon Advantage+ delivers a fair, transparent acquisition process backed by a Compliance-Driven IT model and an AI-native capability stack. Sustained growth, post-acquisition.",
       },
       { property: "og:title", content: "Henagon Advantage+ — Compliance-Driven IT, AI-Native Capability" },
       {
         property: "og:description",
         content:
-          "A fair, value-centric acquisition process backed by an AI-native operating platform — compliance-first, growth-ready.",
+          "Considering a sale of your managed IT services business? Henagon Advantage+ delivers a fair, transparent acquisition process backed by a Compliance-Driven IT model and an AI-native capability stack. Sustained growth, post-acquisition.",
       },
+      { property: "og:url", content: "https://www.henagon.com/advantage" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/advantage" },
     ],
   }),
   component: AdvantagePage,
@@ -82,7 +86,7 @@ function AdvantagePage() {
                 key={a.title}
                 className="rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-[var(--cyan)]/40 hover:shadow-lg"
               >
-                <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+                <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                   <a.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">{a.title}</h3>
@@ -95,7 +99,7 @@ function AdvantagePage() {
               <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-[var(--mint)]/20 blur-2xl" />
               <div className="relative">
                 <div className="flex items-center justify-between">
-                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                     <aiAdvantage.icon className="h-5 w-5" />
                   </div>
                   <span className="rounded-full bg-[var(--mint)]/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--mint)]">
@@ -150,7 +154,7 @@ function AdvantagePage() {
             />
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)] sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)] sm:w-auto"
             >
               Submit <ArrowRight className="h-4 w-4" />
             </button>
@@ -167,7 +171,7 @@ function AdvantagePage() {
             <h3 className="text-2xl font-bold sm:text-3xl">Ready to explore Advantage+?</h3>
             <Link
               to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white"
             >
               Talk to Our Team <ArrowRight className="h-4 w-4" />
             </Link>

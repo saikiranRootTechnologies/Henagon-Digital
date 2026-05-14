@@ -31,8 +31,12 @@ export const Route = createFileRoute("/services")({
       {
         property: "og:description",
         content:
-          "Private AI hosting, AI-led security, agentic development, and vertical AI — operated by one team, governed by one compliance posture.",
+          "Henagon delivers private AI hosting, AI-led security and SOC, agentic development, and vertical AI solutions. A 30-year operator running every layer of the AI stack with US-only data residency and SOC-2 Type II governance.",
       },
+      { property: "og:url", content: "https://www.henagon.com/services" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/services" },
     ],
   }),
   component: ServicesPage,
@@ -51,7 +55,7 @@ const aiServices = [
   { icon: Cloud, title: "AI Hosting & Private Cloud", body: "Tenant-isolated private cloud and hybrid hosting, re-architected for GPU, inference, and US-only data residency. Migration from hyperscalers handled by our team." },
   { icon: ShieldCheck, title: "AI-Led Security & SOC", body: "Cybersecurity Center of Excellence — SOC-2 Type II, CERT-IN — with a 100% AI-driven Tier-1 SOC for machine-speed response. Humans run Tier-2 and above." },
   { icon: Network, title: "AI Agents & Development", body: "Agentic workflows, LLM pipelines, vertical copilots, and RAG platforms built on our own compute by an in-house AI development team." },
-  { icon: LayoutGrid, title: "Vertical AI Solutions", body: "Industry-specific AI products via ezzisolution.ai — healthcare workflow, continuous compliance, and a vertical AI factory pipeline." },
+  { icon: LayoutGrid, title: "Vertical AI Solutions", body: "Industry-specific AI products via ezzisolutions.ai — healthcare workflow, continuous compliance, and a vertical AI factory pipeline." },
 ];
 
 const whyPoints = [
@@ -83,7 +87,7 @@ function ServicesPage() {
               key={p.title}
               className="card-equal group rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-[var(--cyan)]/40 hover:shadow-lg"
             >
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+              <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                 <p.icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 text-lg font-semibold">{p.title}</h3>
@@ -111,7 +115,7 @@ function ServicesPage() {
                 key={s.title}
                 className="card-equal rounded-xl border border-border bg-card p-6 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-[var(--cyan)]/50"
               >
-                <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+                <div className="grid h-10 w-10 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                   <s.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-[var(--navy)]">{s.title}</h3>
@@ -180,7 +184,7 @@ function ServicesPage() {
             />
             <button
               type="submit"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)] sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)] sm:w-auto"
             >
               Submit <ArrowRight className="h-4 w-4" />
             </button>
@@ -197,7 +201,7 @@ function ServicesPage() {
             <h3 className="text-2xl font-bold sm:text-3xl">Ready to put the AI stack to work?</h3>
             <Link
               to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white"
             >
               Talk to Our Team <ArrowRight className="h-4 w-4" />
             </Link>

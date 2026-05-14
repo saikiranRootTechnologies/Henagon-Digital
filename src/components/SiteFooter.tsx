@@ -1,6 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { ShieldCheck, MapPin, Phone, Mail } from "lucide-react";
-import henagonLogoLight from "@/assets/henagon-logo-light.png";
+import henagonLogoLight from "@/assets/henagon-logo-light.webp";
+import logoCoreIt from "@/assets/logos/coreit.webp";
+import logoEzzisolutions from "@/assets/logos/ezzisolutions.webp";
+import logoMatrixnodes from "@/assets/logos/matrixnodes.webp";
+import logoRoot from "@/assets/logos/root.webp";
+import logoEzzi from "@/assets/logos/ezzinet.webp";
 
 const COMPLIANCE = [
   "CERT-IN Empaneled",
@@ -25,12 +30,12 @@ const SITE_MAP = [
 ] as const;
 
 const GROUP_COMPANIES = [
-  { href: "https://coreitx.com", label: "Core IT" },
-  { href: "https://ezzisolution.ai", label: "ezzisolution.ai" },
-  { href: "https://careflowusa.com", label: "CareflowUSA" },
-  { href: "https://matrixnodes.com", label: "Matrixnodes" },
-  { href: "https://roottechnologies.co.in", label: "Root Technologies" },
-  { href: "https://ezzi.net", label: "EZZI" },
+  { href: "https://coreitx.com", label: "Core IT", logo: logoCoreIt },
+  { href: "https://ezzisolutions.ai/", label: "ezzisolutions.ai", logo: logoEzzisolutions },
+  { href: "https://careflowusa.com", label: "CareflowUSA", logo: null },
+  { href: "https://matrixnodes.com", label: "Matrixnodes", logo: logoMatrixnodes },
+  { href: "https://roottechnologies.co.in", label: "Root Technologies", logo: logoRoot },
+  { href: "https://ezzi.net", label: "EZZI", logo: logoEzzi },
 ];
 
 const TAG_STRIP = ["BUILD", "TRANSFORM", "SECURE", "OPERATE", "AUDIT"];
@@ -54,11 +59,11 @@ export function SiteFooter() {
             </p>
             <p className="text-sm font-medium text-white/85">Compliance-Driven IT</p>
 
-            <div className="mt-5 flex flex-wrap items-center gap-2 text-[10px] font-semibold tracking-[0.18em] text-white/60">
+            <div className="mt-5 flex flex-wrap items-center gap-2 text-[10px] font-semibold tracking-[0.18em] text-white/75">
               {TAG_STRIP.map((t, i) => (
                 <span key={t} className="flex items-center gap-2">
                   <span>{t}</span>
-                  {i < TAG_STRIP.length - 1 && <span className="text-white/25">|</span>}
+                  {i < TAG_STRIP.length - 1 && <span className="text-white/45">|</span>}
                 </span>
               ))}
               <span className="ml-1 rounded-full border border-[var(--cyan)]/30 bg-[var(--cyan)]/10 px-2 py-0.5 text-[var(--cyan)]">
@@ -69,15 +74,15 @@ export function SiteFooter() {
             <ul className="mt-7 space-y-3 text-sm text-white/70">
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--mint)]" />
-                <span>Rochester, NY · Dallas, TX</span>
+                <span>440 Cobia Dr, Unit 1101, Katy TX 77494 (USA)</span>
               </li>
               <li className="flex gap-3">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[var(--mint)]" />
-                <a href="tel:+15855550100" className="hover:text-[var(--cyan)] transition-colors">+1 (585) 555-0100</a>
+                <a href="tel:+13466805300" className="hover:text-[var(--cyan)] transition-colors">+1.346.680.5300</a>
               </li>
               <li className="flex gap-3">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[var(--mint)]" />
-                <a href="mailto:hello@henagonusa.com" className="hover:text-[var(--cyan)] transition-colors">hello@henagonusa.com</a>
+                <a href="mailto:info@henagonusa.com" className="hover:text-[var(--cyan)] transition-colors">info@henagonusa.com</a>
               </li>
             </ul>
           </div>
@@ -106,26 +111,37 @@ export function SiteFooter() {
             <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
               Group Companies
             </h4>
-            <ul className="mt-5 space-y-2.5 text-sm">
+            <ul className="mt-5 grid grid-cols-2 gap-2.5 text-sm">
               {GROUP_COMPANIES.map((c) => (
                 <li key={c.href}>
                   <a
                     href={c.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/70 transition-colors hover:text-[var(--cyan)]"
+                    className="group flex h-12 items-center justify-center gap-2 rounded-md border border-white/10 bg-white/95 px-2.5 py-2 transition-colors hover:border-[var(--cyan)]/50"
                   >
-                    {c.label}
+                    {c.logo ? (
+                      <img
+                        src={c.logo}
+                        alt={`${c.label} logo`}
+                        className="max-h-8 w-auto max-w-full object-contain"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="text-xs font-semibold text-[var(--navy)]">{c.label}</span>
+                    )}
                   </a>
                 </li>
               ))}
             </ul>
-            <Link
-              to="/contact-us"
-              className="mt-7 inline-flex rounded-md bg-[var(--gradient-accent)] px-4 py-2 text-sm font-semibold text-[var(--navy)]"
+            <a
+              href="https://calendly.com/alidhoon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex rounded-md bg-[var(--gradient-accent)] px-4 py-2 text-sm font-semibold text-white"
             >
               Book An Appointment
-            </Link>
+            </a>
           </div>
         </div>
       </div>
@@ -153,7 +169,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-5 text-xs text-white/50 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-5 text-xs text-white/70 sm:px-6 lg:px-8">
           © 2026 Henagon Inc. All rights reserved.
         </div>
       </div>

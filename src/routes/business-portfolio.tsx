@@ -1,6 +1,11 @@
 import { PageHero } from "@/components/PageHero";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ExternalLink, BadgeCheck } from "lucide-react";
+import logoCoreIt from "@/assets/logos/coreit.webp";
+import logoEzzisolutions from "@/assets/logos/ezzisolutions.webp";
+import logoMatrixnodes from "@/assets/logos/matrixnodes.webp";
+import logoRoot from "@/assets/logos/root.webp";
+import logoEzzi from "@/assets/logos/ezzinet.webp";
 
 export const Route = createFileRoute("/business-portfolio")({
   head: () => ({
@@ -9,7 +14,7 @@ export const Route = createFileRoute("/business-portfolio")({
       {
         name: "description",
         content:
-          "Henagon operates a portfolio of technology businesses spanning managed IT, cybersecurity, hosting, AI development, and vertical AI products.",
+          "Henagon operates a portfolio of technology businesses spanning managed IT, cybersecurity, hosting, AI development, and vertical AI products — including Core IT, EZZI, Matrixnodes, Root Technologies, ezzisolutions.ai, and CareflowUSA.",
       },
       {
         property: "og:title",
@@ -18,8 +23,12 @@ export const Route = createFileRoute("/business-portfolio")({
       {
         property: "og:description",
         content:
-          "Core IT, EZZI, Matrixnodes, Root Technologies, ezzisolution.ai, and CareflowUSA — the Henagon group of companies.",
+          "Henagon operates a portfolio of technology businesses spanning managed IT, cybersecurity, hosting, AI development, and vertical AI products — including Core IT, EZZI, Matrixnodes, Root Technologies, ezzisolutions.ai, and CareflowUSA.",
       },
+      { property: "og:url", content: "https://www.henagon.com/business-portfolio" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/business-portfolio" },
     ],
   }),
   component: BusinessPortfolioPage,
@@ -45,12 +54,12 @@ const expertise = [
 ];
 
 const companies = [
-  { name: "Core IT", link: "coreitx.com", url: "https://coreitx.com", body: "Managed IT services and cybersecurity for enterprise clients. Anchor operating company within the Henagon group; the platform behind our hosting and SOC delivery." },
-  { name: "EZZI", link: "ezzi.net", url: "https://ezzi.net", body: "Long-standing technology operator; the foundation of our hosting and managed-services lineage." },
-  { name: "Matrixnodes", link: "matrixnodes.com", url: "https://matrixnodes.com", body: "Digital business solutions and AI development. A trusted partner for Fortune 500 enterprises navigating digital transformation." },
-  { name: "Root Technologies", link: "roottechnologies.co.in", url: "https://roottechnologies.co.in", body: "Root Technologies is a leading IT Services integrator delivering world-class IT infrastructure services to customers PAN India." },
-  { name: "ezzisolution.ai", link: "ezzisolution.ai", url: "https://ezzisolution.ai", body: "Vertical AI products and solutions — the go-to-market engine for industry copilots, compliance dashboards, and the next wave of vertical AI from the Henagon platform.", isNew: true },
-  { name: "CareflowUSA", link: "careflowusa.com", url: "https://careflowusa.com", body: "AI-powered healthcare workflow platform. Streamlines care coordination, documentation, and operational flow for providers. HIPAA-aligned. Recurring SaaS.", isNew: true },
+  { name: "Core IT", link: "coreitx.com", url: "https://coreitx.com/", logo: logoCoreIt, body: "Managed IT services and cybersecurity for enterprise clients. Anchor operating company within the Henagon group; the platform behind our hosting and SOC delivery." },
+  { name: "EZZI", link: "ezzi.net", url: "https://ezzi.net/", logo: logoEzzi, body: "Long-standing technology operator; the foundation of our hosting and managed-services lineage." },
+  { name: "Matrixnodes", link: "matrixnodes.com", url: "https://matrixnodes.com/", logo: logoMatrixnodes, body: "Digital business solutions and AI development. A trusted partner for Fortune 500 enterprises navigating digital transformation." },
+  { name: "Root Technologies", link: "roottechnologies.co.in", url: "https://roottechnologies.co.in/", logo: logoRoot, body: "Root Technologies is a leading IT Services integrator delivering world-class IT infrastructure services to customers PAN India." },
+  { name: "ezzisolutions.ai", link: "ezzisolutions.ai", url: "https://ezzisolutions.ai/", logo: logoEzzisolutions, body: "Vertical AI products and solutions — the go-to-market engine for industry copilots, compliance dashboards, and the next wave of vertical AI from the Henagon platform.", isNew: true },
+  { name: "CareflowUSA", link: "careflowusa.com", url: "https://careflowusa.com/", logo: null, body: "AI-powered healthcare workflow platform. Streamlines care coordination, documentation, and operational flow for providers. HIPAA-aligned. Recurring SaaS.", isNew: true },
 ];
 
 const compliance = ["CERT-IN Empaneled", "SOC-2 Type II", "ISO 27001", "HIPAA", "PCI-DSS", "GDPR", "NIST"];
@@ -115,16 +124,27 @@ function BusinessPortfolioPage() {
                 href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-equal group relative rounded-xl border border-border bg-card p-6 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-[var(--mint)]/50"
+                aria-label={`Visit ${c.name} website (opens in new tab)`}
+                className="card-equal group relative flex flex-col rounded-xl border border-border bg-card p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-[var(--mint)]/50 hover:shadow-xl"
               >
                 {c.isNew && (
                   <span className="absolute right-4 top-4 rounded-full bg-[var(--mint)]/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--mint)]">
                     New
                   </span>
                 )}
-                <div className="flex h-12 items-center">
-                  <span className="text-2xl font-bold tracking-tight text-[var(--navy)]">{c.name}</span>
+                <div className="flex h-[90px] items-center justify-start">
+                  {c.logo ? (
+                    <img
+                      src={c.logo}
+                      alt={`${c.name} logo`}
+                      className="max-h-[90px] w-auto max-w-[180px] object-contain"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span className="text-2xl font-bold tracking-tight text-[var(--navy)]">{c.name}</span>
+                  )}
                 </div>
+                <h3 className="mt-4 text-lg font-semibold text-[var(--navy)]">{c.name}</h3>
                 <div className="mt-2 h-px w-12 bg-[var(--gradient-accent)]" />
                 <p className="mt-4 text-sm text-muted-foreground">{c.body}</p>
                 <div className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-medium text-[var(--cyan)]">
@@ -162,7 +182,7 @@ function BusinessPortfolioPage() {
             <h3 className="text-2xl font-bold sm:text-3xl">Explore a partnership with the Henagon group.</h3>
             <Link
               to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+              className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white"
             >
               Talk to Our Team <ArrowRight className="h-4 w-4" />
             </Link>

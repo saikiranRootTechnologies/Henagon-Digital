@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/PageHero";
+import aiStackHero from "@/assets/ai-stack-hero.webp";
 import {
   ArrowRight,
+  X,
   Server,
   Cloud,
   Shield,
@@ -27,14 +29,18 @@ export const Route = createFileRoute("/ai-stack")({
       {
         name: "description",
         content:
-          "Henagon operates every layer of AI — compute, hosting, security, agents, and vertical solutions — vertically integrated on a 30-year operating chassis.",
+          "Henagon operates every layer of AI — compute, hosting, security, agents, and vertical solutions — vertically integrated on a 30-year operating chassis. Two data centers, 100% AI-driven Tier-1 SOC, and SOC-2 Type II compliance built in.",
       },
-      { property: "og:title", content: "The Henagon AI Stack — From Silicon to Solutions" },
+      { property: "og:title", content: "The Henagon AI Stack — From Silicon to Solutions, Run by One Team" },
       {
         property: "og:description",
         content:
-          "Two data centers, 100% AI-driven Tier-1 SOC, and SOC-2 Type II compliance built in.",
+          "Henagon operates every layer of AI — compute, hosting, security, agents, and vertical solutions — vertically integrated on a 30-year operating chassis. Two data centers, 100% AI-driven Tier-1 SOC, and SOC-2 Type II compliance built in.",
       },
+      { property: "og:url", content: "https://www.henagon.com/ai-stack" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.henagon.com/ai-stack" },
     ],
   }),
   component: AIStack,
@@ -71,9 +77,12 @@ function AIStack() {
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "AI Stack" }]}
         title={<>From silicon to solutions — <span className="text-[var(--cyan)]">every layer of AI</span>, run by one team.</>}
         subtitle="A vertically integrated AI platform built on 30 years of operating discipline. Compute, hosting, security, agents, and vertical solutions — owned, governed, and delivered by Henagon."
+        accentGradient
+        dark
+        backgroundImage={aiStackHero}
       />
 
-      <div className="bg-[#0F172A] text-white">
+      <div className="-mb-24 bg-[#0F172A] text-white">
       {/* Stack visualization — 5 layers */}
       <section className="border-b border-[var(--cyan)]/20">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -109,8 +118,8 @@ function AIStack() {
                 }`}
               >
                 <l.icon className={`h-5 w-5 ${l.ai ? "text-[var(--mint)]" : "text-[var(--cyan)]"}`} />
-                <p className="mt-2 font-mono text-[10px] text-white/60">{l.n}</p>
-                <p className="text-xs font-semibold text-white">{l.label}</p>
+                <p className="mt-3 font-mono text-2xl font-bold leading-none text-[var(--cyan)] sm:text-3xl">{l.n}</p>
+                <p className="mt-3 text-[17px] font-semibold text-white">{l.label}</p>
               </div>
             ))}
           </div>
@@ -158,7 +167,7 @@ function AIStack() {
                 className="relative overflow-hidden rounded-2xl border border-[var(--cyan)]/30 bg-transparent p-8 "
               >
                 <div className="relative flex items-start gap-4">
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-[var(--gradient-accent)] text-[var(--navy)]">
+                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-[var(--gradient-accent)] text-white">
                     <MapPin className="h-6 w-6" />
                   </div>
                   <div>
@@ -328,8 +337,9 @@ function AIStack() {
                 key={before}
                 className={`grid grid-cols-2 `}
               >
-                <div className="border-r border-[var(--cyan)]/15 px-5 py-4 text-sm text-white/55 line-through decoration-white/30">
-                  {before}
+                <div className="flex items-center gap-2 border-r border-[var(--cyan)]/15 px-5 py-4 text-sm text-white/55 line-through decoration-white/30">
+                  <X className="h-3.5 w-3.5 shrink-0 text-white/40 no-underline" />
+                  <span>{before}</span>
                 </div>
                 <div className="flex items-center gap-2 px-5 py-4 text-sm font-medium text-white">
                   <ArrowRight className="h-3.5 w-3.5 text-[var(--mint)]" />
@@ -357,12 +367,12 @@ function AIStack() {
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
           <LayerEyebrow n="05" label="AI Solutions" />
           <h2 className="mt-4 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
-            Vertical AI solutions, delivered through ezzisolution.ai.
+            Vertical AI solutions, delivered through ezzisolutions.ai.
           </h2>
           <p className="mt-5 max-w-3xl text-lg text-white/70">
             Industry-specific AI products built on our own stack — launched in healthcare, in build
             for compliance, and pipelined for the next wave of vertical applications.
-            ezzisolution.ai operates as a vertical AI factory: a repeatable playbook that takes new
+            ezzisolutions.ai operates as a vertical AI factory: a repeatable playbook that takes new
             solutions from concept to market.
           </p>
 
@@ -434,7 +444,7 @@ function AIStack() {
           </h2>
           <Link
             to="/contact-us"
-            className="relative mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-6 py-3 text-sm font-semibold text-[var(--navy)] "
+            className="relative mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-6 py-3 text-sm font-semibold text-white "
           >
             Talk to Our Team <ArrowRight className="h-4 w-4" />
           </Link>

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyHenagonRouteImport } from './routes/why-henagon'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as OurApproachRouteImport } from './routes/our-approach'
 import { Route as DeliveringValueRouteImport } from './routes/delivering-value'
@@ -26,6 +27,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const WhyHenagonRoute = WhyHenagonRouteImport.update({
   id: '/why-henagon',
   path: '/why-henagon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/delivering-value': typeof DeliveringValueRoute
   '/our-approach': typeof OurApproachRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/why-henagon': typeof WhyHenagonRoute
 }
 export interface FileRoutesByTo {
@@ -117,6 +124,7 @@ export interface FileRoutesByTo {
   '/delivering-value': typeof DeliveringValueRoute
   '/our-approach': typeof OurApproachRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/why-henagon': typeof WhyHenagonRoute
 }
 export interface FileRoutesById {
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   '/delivering-value': typeof DeliveringValueRoute
   '/our-approach': typeof OurApproachRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/why-henagon': typeof WhyHenagonRoute
 }
 export interface FileRouteTypes {
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/delivering-value'
     | '/our-approach'
     | '/services'
+    | '/sitemap.xml'
     | '/why-henagon'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -165,6 +175,7 @@ export interface FileRouteTypes {
     | '/delivering-value'
     | '/our-approach'
     | '/services'
+    | '/sitemap.xml'
     | '/why-henagon'
   id:
     | '__root__'
@@ -180,6 +191,7 @@ export interface FileRouteTypes {
     | '/delivering-value'
     | '/our-approach'
     | '/services'
+    | '/sitemap.xml'
     | '/why-henagon'
   fileRoutesById: FileRoutesById
 }
@@ -196,6 +208,7 @@ export interface RootRouteChildren {
   DeliveringValueRoute: typeof DeliveringValueRoute
   OurApproachRoute: typeof OurApproachRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WhyHenagonRoute: typeof WhyHenagonRoute
 }
 
@@ -206,6 +219,13 @@ declare module '@tanstack/react-router' {
       path: '/why-henagon'
       fullPath: '/why-henagon'
       preLoaderRoute: typeof WhyHenagonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -308,8 +328,19 @@ const rootRouteChildren: RootRouteChildren = {
   DeliveringValueRoute: DeliveringValueRoute,
   OurApproachRoute: OurApproachRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   WhyHenagonRoute: WhyHenagonRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

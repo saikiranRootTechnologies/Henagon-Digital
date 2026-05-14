@@ -38,7 +38,7 @@
   --radius: 0.25rem; /* 4px — minimalist standard */
 
   /* Brand */
-  --navy: oklch(0.21 0.04 264);          /* #0F172A deep navy */
+  --navy: #143052;                        /* brand deep navy */
   --cyan: oklch(0.74 0.13 215);          /* #06B6D4 */
   --mint: oklch(0.72 0.16 162);          /* #10B981 */
 
@@ -53,7 +53,7 @@
   --secondary: oklch(0.97 0.01 240);
   --secondary-foreground: var(--navy);
   --muted: oklch(0.97 0.01 240);
-  --muted-foreground: oklch(0.5 0.02 260);
+  --muted-foreground: oklch(0.42 0.02 260);
   --accent: var(--cyan);
   --accent-foreground: var(--navy);
   --destructive: oklch(0.6 0.24 27);

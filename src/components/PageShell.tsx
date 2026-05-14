@@ -30,12 +30,14 @@ export function PageShell({ eyebrow, title, lede }: PageShellProps) {
           <p className="mt-3 text-muted-foreground">
             Schedule a working session with a Henagon principal.
           </p>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-[var(--navy)] shadow-[var(--shadow-glow)]"
+          <a
+            href="https://calendly.com/alidhoon"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center gap-2 rounded-md bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-white shadow-[var(--shadow-glow)]"
           >
             Book An Appointment <ArrowRight className="h-4 w-4" />
-          </Link>
+          </a>
         </div>
       </section>
     </>
